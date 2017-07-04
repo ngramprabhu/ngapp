@@ -1,0 +1,96 @@
+<h2>{{message}}</h2>
+<table class="table table-bordered table-striped">
+    <tbody>
+        <tr>
+            <td>
+                Customer Id
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="customer.custid" id="customer-id">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Customer Name
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="customer.custname" id="customer-name">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Customer Address
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="customer.address" id="customer-address">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Customer City
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="customer.city" id="customer-city">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Customer State
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="customer.state" id="customer-state">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Customer Occupation
+            </td>
+            <td>
+                <!--<input type="text" class="form-control" [(ngModel)]="customer.occupation" id="customer-occupation">-->
+                <select [(ngModel)]="customer.occupation" class="form-control">
+                    <option *ngFor="let o of occupations">{{o}}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="New" class="btn btn-default" id="btnNew" (click)="clear()">
+            </td>
+            <td>
+                <input type="button" value="Save" class="btn btn-success" id="btnSave" (click)="save()">
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-striped">
+    <thead>
+        <th>
+            Customer Id
+        </th>
+        <th>
+            Customer Name
+        </th>
+        <th>
+            Customer Address
+        </th>
+        <th>
+            Customer City
+        </th>
+        <th>
+            Customer State
+        </th>
+        <th>
+            Customer Occupation
+        </th>
+    </thead>
+    <tbody id="dataholder">
+        <tr *ngFor="let c of customers" (click)="getSelectedCustomer(c)">
+            <td>{{c.custid}}</td>
+            <td>{{c.custname}}</td>
+            <td>{{c.address}}</td>
+            <td>{{c.city}}</td>
+            <td>{{c.state}}</td>
+            <td>{{c.occupation}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Provide the base href 
+    for routing for the default view-->
+    <base href="/" />
+    <title>Angular 2 App</title>
+    <script>
+        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+        ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"></link>
+</head>
+<body>
+    <h1>Angular 2 Application</h1>
+    <!--<sim-comp></sim-comp>
+    <cust-data></cust-data>
+    <cust-simple-form-data></cust-simple-form-data>
+    <cust-valid-data></cust-valid-data>
+    <cust-model-valid-data></cust-model-valid-data>
+    <cust-assignment-data></cust-assignment-data>
+    <person-service></person-service>
+    <main-page></main-page>-->
+    <pipe-demo></pipe-demo>
+    
+    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="systemjs.config.js"></script>
+    <script>
+        System.import('./app/main')
+            .then(null, console.error.bind(console));
+    </script>
+</body>
+</html>

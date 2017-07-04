@@ -1,0 +1,117 @@
+<h2>{{message}}</h2>
+<div [hidden]="isSubmitted">
+    <form (ngSubmit)="save()" name="custForm" novalidate [formGroup]="form">
+        <table class="table table-bordered table-striped">
+            <tbody>
+                <tr>
+                    <td>
+                        Customer Id
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" [(ngModel)]="customer.custid" name="custid" formControlName="custid">
+                        <div *ngIf="form.controls.custid.dirty && !form.controls.custid.valid" class="alert alert-danger">
+                            <p *ngIf="form.controls.custid.errors.required">
+                                Customer id is must
+                            </p>
+                            <p *ngIf="form.controls.custid.errors.pattern">
+                                Customer id must be number
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Customer Name
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" [(ngModel)]="customer.custname" name="custname" formControlName="custname">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Customer Address
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" [(ngModel)]="customer.address" name="address" formControlName="address">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Customer City
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" [(ngModel)]="customer.city" name="city" formControlName="city">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Customer State
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" [(ngModel)]="customer.state" name="state" formControlName="state">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Customer Occupation
+                    </td>
+                    <td>
+                        <!--<input type="text" class="form-control" [(ngModel)]="customer.occupation" id="customer-occupation">-->
+                        <select [(ngModel)]="customer.occupation" name="occupation" formControlName="occupation" class="form-control">
+                    <option *ngFor="let o of occupations">{{o}}</option>
+                </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="New" class="btn btn-default" id="btnNew" (click)="clear()">
+                    </td>
+                    <td>
+                        <input type="submit" value="Save" class="btn btn-success" id="btnSave">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div [hidden]="!isSubmitted">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <th>
+                Customer Id
+            </th>
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Customer Address
+            </th>
+            <th>
+                Customer City
+            </th>
+            <th>
+                Customer State
+            </th>
+            <th>
+                Customer Occupation
+            </th>
+        </thead>
+        <tbody id="dataholder">
+            <tr *ngFor="let c of customers" (click)="getSelectedCustomer(c)">
+                <td>{{c.custid}}</td>
+                <td>{{c.custname}}</td>
+                <td>{{c.address}}</td>
+                <td>{{c.city}}</td>
+                <td>{{c.state}}</td>
+                <td>{{c.occupation}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6">
+                    <input type="button" value="OK" (click)="loadForm()" class="btn btn-success">
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
